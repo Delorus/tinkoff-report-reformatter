@@ -1,0 +1,41 @@
+plugins {
+    id 'java'
+    id "com.github.johnrengelman.shadow" version "5.0.0"
+}
+
+group 'ru.sherb.tinkrep'
+version '1.0-SNAPSHOT'
+
+targetCompatibility = 11
+sourceCompatibility = 11
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+repositories {
+    mavenCentral()
+}
+
+test {
+    useJUnitPlatform()
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'ru.sherb.tinkrep.Launch'
+    }
+}
+
+ext {
+    junitVersion = '5.5.2'
+    lombokVersion = '1.18.6'
+}
+
+dependencies {
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
+    testRuntime "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
+
+    compileOnly "org.projectlombok:lombok:$lombokVersion"
+    annotationProcessor "org.projectlombok:lombok:$lombokVersion"
+}
