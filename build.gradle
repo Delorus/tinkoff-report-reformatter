@@ -40,4 +40,5 @@ dependencies {
     annotationProcessor "org.projectlombok:lombok:$lombokVersion"
 
     implementation "org.apache.poi:poi-ooxml:4.1.2"
+    implementation "org.javamoney:moneta:1.3"
 }
