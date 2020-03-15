@@ -40,6 +40,10 @@ public class XLSXReader<T, L> {
         for (Row row : sheet) {
             ArrayList<String> cells = findCellsInRow(row);
 
+            if (cells.isEmpty()) {
+                continue;
+            }
+
             L line = lineTransformer.apply(cells);
 
             boolean handleByGlobalRule = false;
@@ -73,10 +77,14 @@ public class XLSXReader<T, L> {
         for (Cell cell : row) {
             switch (cell.getCellType()) {
                 case NUMERIC:
-                    result.add(Double.toString(cell.getNumericCellValue()));
+                    if (cell.getNumericCellValue() % 1 != 0) {
+                        result.add(Double.toString(cell.getNumericCellValue()));
+                    } else {
+                        result.add(Integer.toString((int) cell.getNumericCellValue()));
+                    }
                     break;
                 case STRING:
-                    result.add(cell.getStringCellValue());
+                    result.add(cell.getStringCellValue().replaceAll("\n+", ""));
                     break;
                 case BOOLEAN:
                     result.add(Boolean.toString(cell.getBooleanCellValue()));

@@ -1,5 +1,8 @@
 package ru.sherb.tinkrep.model;
 
+import lombok.Builder;
+import lombok.Value;
+
 import javax.money.MonetaryAmount;
 import java.time.LocalDate;
 
@@ -7,13 +10,15 @@ import java.time.LocalDate;
  * @author maksim
  * @since 15.03.2020
  */
+@Builder
+@Value
 public class Operation {
 
-    private LocalDate date;
-    private OperationType type;
-    private MonetaryAmount price;
-    private TradingTool item;
-    private Count count;
-    private MonetaryAmount summary;
-
+    LocalDate date;
+    OperationType type;
+    MonetaryAmount price;
+    String toolId;
+    Count count;
+    MonetaryAmount summary;
+    MonetaryAmount commission;
 }

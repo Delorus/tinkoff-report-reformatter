@@ -23,11 +23,15 @@ public class RegexChecker implements Checker {
             return false;
         }
 
-        return prefix.matcher(line.get(0)).find();
+        return prefix.matcher(normalizeLine(line)).find();
     }
 
     @Override
     public boolean fullEquals(List<String> line) {
-        return pattern.matcher(String.join(" ", line)).matches();
+        return pattern.matcher(normalizeLine(line)).matches();
+    }
+
+    private String normalizeLine(List<String> line) {
+        return String.join(" ", line).trim().replaceAll("\\s+", " ");
     }
 }

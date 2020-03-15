@@ -20,11 +20,15 @@ public class PrefixChecker implements Checker {
             return false;
         }
 
-        return line.get(0).startsWith(prefix.substring(0, 3));
+        return normalizeLine(line).startsWith(prefix.substring(0, 3));
     }
 
     @Override
     public boolean fullEquals(List<String> line) {
-        return String.join(" ", line).startsWith(prefix);
+        return normalizeLine(line).startsWith(prefix);
+    }
+
+    private String normalizeLine(List<String> line) {
+        return String.join(" ", line).trim().replaceAll("\\s+", " ");
     }
 }
