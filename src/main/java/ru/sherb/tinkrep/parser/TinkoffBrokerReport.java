@@ -25,10 +25,10 @@ import static ru.sherb.tinkrep.parser.ParseUtils.parseMoney;
  */
 public class TinkoffBrokerReport {
 
-    public static final String PERIOD_PREFIX = "Отчет о сделках и операциях за период";
-    public static final String COMPLETE_DEALS_TABLE = "1.1 Информация о совершенных и исполненных сделках на конец отчетного периода";
-    public static final String INCOMPLETE_DEALS_TABLE = "1.2 Информация о неисполненных сделках на конец отчетного периода";
-    public static final String CASH_TRANSACTIONS_TABLE = "2. Операции с денежными средствами";
+    private static final String PERIOD_PREFIX = "Отчет о сделках и операциях за период";
+    private static final String COMPLETE_DEALS_TABLE = "1.1 Информация о совершенных и исполненных сделках на конец отчетного периода";
+    private static final String INCOMPLETE_DEALS_TABLE = "1.2 Информация о неисполненных сделках на конец отчетного периода";
+    private static final String CASH_TRANSACTIONS_TABLE = "2. Операции с денежными средствами";
 
     private static final String DELIMITER = ";";
 

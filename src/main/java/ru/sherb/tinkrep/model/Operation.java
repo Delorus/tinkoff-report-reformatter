@@ -21,4 +21,8 @@ public class Operation {
     Count count;
     MonetaryAmount summary;
     MonetaryAmount commission;
+
+    public Operation part(Count count) {
+        return new Operation(date, type, price, toolId, count, price.multiply(count), commission);
+    }
 }

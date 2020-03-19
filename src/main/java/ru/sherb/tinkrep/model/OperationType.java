@@ -17,6 +17,7 @@ public enum OperationType {
 
         if (raw.contains("Продажа")) {
             return SELL;
+            //todo РЕПО?
         } else if (raw.contains("Покупка")) {
             return BUY;
         }
